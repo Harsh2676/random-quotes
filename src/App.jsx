@@ -14,7 +14,6 @@ const App = () => {
     try {
       const response = await fetch('https://dummyjson.com/quotes/random?limit=100')
       const data = await response.json()
-      console.log(data)
       setCurrentQuote(data.quote)
       setCurrentQuoteid(data.id)
       setCurrentQuoteauthor(data.author)
