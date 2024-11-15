@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { FaDice, FaRandom, FaRegTimesCircle } from 'react-icons/fa'
+import { FaDice, FaRandom, FaRegTimesCircle, FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaGlobe } from 'react-icons/fa'
+import { FcGlobe } from 'react-icons/fc'
 
 const App = () => {
   const [currentQuote, setCurrentQuote] = useState("")
@@ -12,7 +13,7 @@ const App = () => {
     setIsLoading(true)
     setError(null)
     try {
-      const response = await fetch('https://dummyjson.com/quotes/random?limit=100')
+      const response = await fetch('https://dummyjson.com/quotes/random')
       const data = await response.json()
       setCurrentQuote(data.quote)
       setCurrentQuoteid(data.id)
@@ -24,9 +25,24 @@ const App = () => {
     }
   }
 
+  function CustomLog () {
+    console.log('%c' + `
+  _    _          _____   _____ _    _   ____  _    _          _____            _____ _______     __      
+ | |  | |   /\\   |  __ \\ / ____| |  | | |  _ \\| |  | |   /\\   |  __ \\     /\\   |  __ \\_   _\\ \\   / //\\    
+ | |__| |  /  \\  | |__) | (___ | |__| | | |_) | |__| |  /  \\  | |__) |   /  \\  | |  | || |  \\ \\_/ //  \\   
+ |  __  | / /\\ \\ |  _  / \\___ \\|  __  | |  _ <|  __  | / /\\ \\ |  _  /   / /\\ \\ | |  | || |   \\   // /\\ \\  
+ | |  | |/ ____ \\| | \\ \\ ____) | |  | | | |_) | |  | |/ ____ \\| | \\ \\  / ____ \\| |__| || |_   | |/ ____ \\ 
+ |_|  |_/_/    \\_\\_|  \\_\\_____/|_|  |_| |____/|_|  |_/_/    \\_\\_|  \\_\\/_/    \\_\\_____/_____|  |_/_/    \\_\\
+                                                                                                                                                                                                              
+`, 'font-family: monospace; color: #3B82F6; font-size: 10px; text-shadow: 2px 2px 4px rgba(59, 130, 246, 0.3); filter: drop-shadow(0 0 2px #3B82F6);');
+
+    console.log("%c" + "I Hope You Enjoy This Quotes Generator", 'font-family: monospace; color: #3B82F6; font-size: 10px; text-shadow: 2px 2px 4px rgba(59, 130, 246, 0.3); filter: drop-shadow(0 0 2px #3B82F6);')
+  }
+
   // This useEffect runs once when the component mounts to fetch initial quote
   useEffect(() => {
     fetchQuote();
+    CustomLog();
   }, []) // Empty dependency array means it only runs once on mount
 
   return (
@@ -73,6 +89,44 @@ const App = () => {
         >
           <FaRandom className={`text-gray-900 text-xl ${isLoading ? 'animate-spin' : 'group-hover:animate-bounce'}`} />
         </button>
+
+        {/* Social Links */}
+        <div className="absolute bottom-[-80px] left-1/2 transform -translate-x-1/2">
+          <div className="flex gap-6">
+            <a
+              href="https://github.com/Harsh2676"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-emerald-400 transition-colors duration-300"
+            >
+              <FaGithub size={24} />
+            </a>
+            <a
+              href="https://linkedin.com/in/harsh-bharadiya"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-emerald-400 transition-colors duration-300"
+            >
+              <FaLinkedin size={24} />
+            </a>
+            <a
+              href="https://twitter.com/harsh_bharadiya"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-emerald-400 transition-colors duration-300"
+            >
+              <FaInstagram size={24} />
+            </a>
+            <a
+              href="https://harsh-react-portfolio.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-emerald-400 transition-colors duration-300"
+            >
+              <FcGlobe  size={24} />
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   )
