@@ -18,7 +18,7 @@ export const QuoteApp = () => {
         : <div className="quote-card animate__animated animate__fadeIn animate__fast">
           <div className="block-quote">
             <p className="author">Advice 	&#35;{id}</p>
-            <p className="quote">{`" ${advice} "`}</p>
+            <p className="quote">{`"${advice}"`}</p>
           </div>
           <Divider />
           <p className="credits">Made By <span><a href="https://github.com/Harsh2676">Harsh<GoArrowUpRight size={20} /></a></span></p>
