@@ -1,3 +1,140 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Font: Manrope - 400, 600, 700 */ 
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap');
+
+:root {
+  /* Primary */
+  --clr-light-cyan: hsl(193, 38%, 86%);
+  --clr-neon-green: hsl(150, 100%, 66%);
+
+  /* Neutral */
+  --clr-grayish-blue: hsl(217, 19%, 38%);
+  --clr-dark-grayish-blue: hsl(217, 19%, 24%);
+  --clr-dark-blue: hsl(218, 23%, 16%);
+}
+
+*, 
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--clr-dark-blue);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--clr-light-cyan);
+}
+
+
+main {
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+}
+
+/* Quote card */
+main,
+.quote-card,
+.block-quote {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.quote-card {
+  position: relative;
+  width: 100%;
+  max-width: 550px;
+  margin: auto;
+  padding: 3rem 2rem 5rem;
+  border-radius: 0.8rem;
+  text-align: center;
+  background: var(--clr-dark-grayish-blue);
+}
+
+.quote {
+  font-size: 1.75rem;
+  color: var(--clr-light-cyan);
+}
+
+.credits {
+  font-size: 1.5rem;
+}
+
+.credits span a {
+  color: hsl(150, 100%, 66%);
+  text-decoration: none;
+}
+
+.author {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--clr-neon-green);
+  letter-spacing: 3px;
+}
+
+.generate-btn {
+  position: absolute;
+  bottom: -33.33px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 65px;
+  height: 65px;
+  margin: auto;
+  border: none;
+  border-radius: 5rem;
+  background: var(--clr-neon-green);
+  cursor: pointer;
+}
+
+.generate-btn:hover {
+  transition: box-shadow ease 0.2s;
+  box-shadow: 0px 0px 35px var(--clr-neon-green);
+}
+
+/* Loader */
+.bouncing-loader {
+  display: flex;
+  justify-content: center;
+}
+
+.bouncing-loader > div {
+  width: 16px;
+  height: 16px;
+  margin: 3px 6px;
+  border-radius: 50%;
+  background-color: var(--clr-neon-green);
+  opacity: 1;
+  animation: bouncing-loader 0.6s infinite alternate;
+}
+
+@keyframes bouncing-loader {
+  to {
+    opacity: 0.1;
+    transform: translateY(-16px);
+  }
+}
+
+.bouncing-loader > div:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.bouncing-loader > div:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* Resposive style */
+@media screen and (max-width: 700px) {
+  .quote-card {
+    max-width: 90%;
+  }
+
+  .quote {
+    font-size: 1.25rem;
+  }
+}

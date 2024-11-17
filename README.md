@@ -1,90 +1,27 @@
-# Random Quotes Generator
+# Quote Generator App - React
 
-A sleek and modern random quote generator built with React and Tailwind CSS. The application fetches random quotes from the DummyJSON API and displays them with a beautiful, minimalist interface.
+<p align="center">
+ <img src="src/assets/design/quote-app-screenshot.png" alt="Project screenshot">
+</p>
 
-## Features
+This web app generates a first quote on window load, after that the user can generate random quotes when pressing the green generator button. For this project, I wanted to specifically work on React custom hooks.
 
-- 🎲 Generate random quotes with a single click
-- 💫 Smooth animations and transitions
-- 🎨 Modern UI with gradient background and glass-morphism effects
-- 🔄 Loading states and error handling
-- 📱 Fully responsive design
+View Live Demo: [Click](https://jarolthecoder.github.io/QuoteApp/)
 
-## Tech Stack
+## 'useFetch' custom hook
+For the api call I created a custom hook called 'useFetch' that takes a single argument, 'url', representing the URL to fetch data from.
 
-- React 18
-- Vite
-- Tailwind CSS
-- React Icons
-- DummyJSON API
+The hook sets up a state object using the useState hook, which initially has two properties: 'data' that is set to null and 'isLoading' that is set to true.
 
-## Getting Started
+The fetchData function makes a request to the specified URL using the Fetch API. The hook extracts the 'slip' property from the JSON data using destructuring after receiving the response. Then it updates the state using setState to store the extracted slip data and sets isLoading to false to indicate that the data has finished loading.
 
-### Prerequisites
+The hook uses the useEffect hook to make the fetch request when the component using the hook is rendered for the first time or whenever the url argument changes.
 
-- Node.js (Latest LTS version recommended)
-- npm or yarn
+This custom hook returns an object containing the current data, isLoading, and fetchData properties of the state. This allows a component that uses the useFetch hook to access the fetched data, the loading state, and the fetch function.
 
-### Installation
+Finally, the 'QuoteApp' component uses the 'useFetch' hook to fetch data from the [](https://api.adviceslip.com/advice) URL. The hook returns the fetched data, a boolean flag indicating whether the data is still being loaded, and the fetchData function.
 
-1. Clone the repository:
-```bash
-git clone https://github.com/Harsh2676/random-quotes
-```
+The component destructures the hook's returned values into data, fetchData, and isLoading variables. The data object is destructured again into two properties, id and advice once the data is not null. As for the fetchData function, it is passed as a prop to the 'Button' component, which will trigger a new fetch request and update the data when the button is clicked.
 
-2. Install dependencies:
-```bash
-npm install
-# or
-yarn install
-```
-
-3. Start the development server:
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-4. Open your browser and visit `http://localhost:5173`
-
-## Available Scripts
-
-- `npm run dev` - Starts the development server
-- `npm run build` - Creates a production build
-- `npm run preview` - Previews the production build locally
-- `npm run lint` - Runs ESLint to check code quality
-
-## Project Structure
-
-```
-random-quotes/
-├── src/
-│   ├── App.jsx        # Main application component
-│   ├── main.jsx       # Application entry point
-│   └── index.css      # Global styles and Tailwind imports
-├── public/            # Static assets
-├── index.html         # HTML template
-└── configuration files
-```
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## License
-
-This project is open source and available under the MIT License.
-
-## Acknowledgments
-
-- [DummyJSON](https://dummyjson.com/) for providing the quotes API
-- [Tailwind CSS](https://tailwindcss.com/) for the styling framework
-- [React Icons](https://react-icons.github.io/react-icons/) for the icon set
-```
-
-</rewritten_file>
+### Attributions 
+[Frontend Mentor](https://www.frontendmentor.io), [Advice Slip API](https://api.adviceslip.com/)
